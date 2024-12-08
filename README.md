@@ -10,6 +10,7 @@
 cargo build 
 
 ```
+
 ```
 λ gauravsablok rust-samtools-genomeview → λ git main* → \
 ./target/debug/rust-samtools-genome-view -h
@@ -33,11 +34,7 @@ Options:
 - how to run the binary
 
 ```
-./target/debug/rust-samtools-genome-view ./sample-files/alignreads-metagenomics.sam \ 
-./sample-files/sample-list.txt \
-./sample-files/sample-ids.fasta \
-10 10 \
-/home/gauravsablok/Desktop/applicativesystem/system/rust-samtools-genomeview/prank
+./rust-samtools-genome-view ./sample-files/Col0_C1.100k_selected.sam ./sample-files/idlist.txt ./sample-files/sample-fasta.fasta 5 10 ./prank
 
 ```
 
