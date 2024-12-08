@@ -4,6 +4,7 @@
 - rust-samtools-genome-view: takes a genome alignment files, a reference fasta file, the upstream and the downstream regions and the path to the prank aligner and then aligns the extracted regions and also outputs a unaligned file.The aligned region will also be visualized into the terminal using the embedded approach. 
 - This feature is not present in samtools and specific to rust-samtools and allows for the direct estimation of the reads to alignments approach for desining capture assay.
 - targetd capture assay development for taking reads from HybSeq.
+- general note: Incase of Golang and RUST, please see the last commit message and if it says compiled binary then it is completed or else still in development version.
 
 ```
 cargo build 
