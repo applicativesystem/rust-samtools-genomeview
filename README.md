@@ -6,6 +6,8 @@
 - targetd capture assay development for taking reads from HybSeq.
 - general note: Incase of Golang and RUST, please see the last commit message and if it says compiled binary then it is completed or else still in development version.
 
+![](https://github.com/applicativesystem/rust-samtools-genomeview/blob/main/rust-samtools-genomeview.png)
+
 ```
 cargo build 
 
