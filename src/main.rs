@@ -10,7 +10,7 @@ use std::process::Command;
 /*
 *Author Gaurav Sablok
 *Universitat Potsdam
-*Date 2024-12-5
+*Date 2024-12-13
 
 rust-samtools-genomeview: takes a genome alignment files, a reference fasta file,
 the upstream and the downstream regions and the path to the prank aligner and then
@@ -215,7 +215,8 @@ fn samtools_extractor(
     let downstream_aligned =
         File::open("selected-ids-downstream-aligned.fasta.best.fas").expect("File not found");
     let upstream_region_downstream =
-        File::open("selected-ids-upstream-region-downstream-aliged.fasta.best.fas").expect("File not found");
+        File::open("selected-ids-upstream-region-downstream-aliged.fasta.best.fas")
+            .expect("File not found");
 
     #[derive(Debug, Clone, PartialEq, PartialOrd)]
     struct Embedded {
@@ -261,9 +262,8 @@ fn samtools_extractor(
             if upstream_finalholdseq_multivector[i][j].to_string()
                 == upstream_finalholdseq_multivector[i + 1][j].to_string()
             {
-                println!(
-                    "{}\t{}{}",
-                    j,
+                print!(
+                    "{}{}",
                     upstream_finalholdseq_multivector[i][j]
                         .to_string()
                         .blue()
@@ -276,9 +276,8 @@ fn samtools_extractor(
             } else if upstream_finalholdseq_multivector[i][j].to_string()
                 != upstream_finalholdseq_multivector[i + 1][j].to_string()
             {
-                println!(
-                    "{}\t{}{}",
-                    j,
+                print!(
+                    "{}{}",
                     upstream_finalholdseq_multivector[i][j]
                         .to_string()
                         .red()
@@ -292,6 +291,7 @@ fn samtools_extractor(
                 continue;
             }
         }
+        println!();
     }
 
     let mut downstream_header: Vec<String> = Vec::new();
@@ -331,38 +331,37 @@ fn samtools_extractor(
         for j in 0..downstream_finalholdseq_multivector[0].len() {
             if downstream_finalholdseq_multivector[i][j].to_string()
                 == downstream_finalholdseq_multivector[i + 1][j].to_string()
-                {
-                    println!(
-                        "{}\t{}{}",
-                        j,
-                        downstream_finalholdseq_multivector[i][j]
+            {
+                print!(
+                    "{}{}",
+                    downstream_finalholdseq_multivector[i][j]
                         .to_string()
                         .blue()
                         .bold(),
-                             downstream_finalholdseq_multivector[i + 1][j]
-                             .to_string()
-                             .blue()
-                             .bold()
-                    )
-                } else if downstream_finalholdseq_multivector[i][j].to_string()
-                    != downstream_finalholdseq_multivector[i + 1][j].to_string()
-                    {
-                        println!(
-                            "{}\t{}{}",
-                            j,
-                            downstream_finalholdseq_multivector[i][j]
-                            .to_string()
-                            .red()
-                            .bold(),
-                                 downstream_finalholdseq_multivector[i + 1][j]
-                                 .to_string()
-                                 .white()
-                                 .bold()
-                        )
-                    } else {
+                    downstream_finalholdseq_multivector[i + 1][j]
+                        .to_string()
+                        .blue()
+                        .bold()
+                )
+            } else if downstream_finalholdseq_multivector[i][j].to_string()
+                != downstream_finalholdseq_multivector[i + 1][j].to_string()
+            {
+                print!(
+                    "{}{}",
+                    downstream_finalholdseq_multivector[i][j]
+                        .to_string()
+                        .red()
+                        .bold(),
+                    downstream_finalholdseq_multivector[i + 1][j]
+                        .to_string()
+                        .white()
+                        .bold()
+                )
+            } else {
                 continue;
             }
         }
+        println!();
     }
 
     let mut upstream_region_downstream_header: Vec<String> = Vec::new();
@@ -402,38 +401,37 @@ fn samtools_extractor(
         for j in 0..upstream_region_downstream_finalholdseq_multivector[0].len() {
             if upstream_region_downstream_finalholdseq_multivector[i][j].to_string()
                 == upstream_region_downstream_finalholdseq_multivector[i + 1][j].to_string()
-                {
-                    println!(
-                        "{}\t{}{}",
-                        j,
-                        upstream_region_downstream_finalholdseq_multivector[i][j]
+            {
+                print!(
+                    "{}{}",
+                    upstream_region_downstream_finalholdseq_multivector[i][j]
                         .to_string()
                         .blue()
                         .bold(),
-                             upstream_region_downstream_finalholdseq_multivector[i + 1][j]
-                             .to_string()
-                             .blue()
-                             .bold()
-                    )
-                } else if upstream_region_downstream_finalholdseq_multivector[i][j].to_string()
-                    != upstream_region_downstream_finalholdseq_multivector[i + 1][j].to_string()
-                    {
-                        println!(
-                            "{}\t{}{}",
-                            j,
-                            upstream_region_downstream_finalholdseq_multivector[i][j]
-                            .to_string()
-                            .red()
-                            .bold(),
-                                 upstream_region_downstream_finalholdseq_multivector[i + 1][j]
-                                 .to_string()
-                                 .white()
-                                 .bold()
-                        )
-                    } else {
+                    upstream_region_downstream_finalholdseq_multivector[i + 1][j]
+                        .to_string()
+                        .blue()
+                        .bold()
+                )
+            } else if upstream_region_downstream_finalholdseq_multivector[i][j].to_string()
+                != upstream_region_downstream_finalholdseq_multivector[i + 1][j].to_string()
+            {
+                print!(
+                    "{}{}",
+                    upstream_region_downstream_finalholdseq_multivector[i][j]
+                        .to_string()
+                        .red()
+                        .bold(),
+                    upstream_region_downstream_finalholdseq_multivector[i + 1][j]
+                        .to_string()
+                        .white()
+                        .bold()
+                )
+            } else {
                 continue;
             }
         }
+        println!();
     }
 
     Ok("The files have been written and the summary is given below".to_string())
